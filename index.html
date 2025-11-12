@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Time Finder</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 skal vi game?</h1>
+            <p>lav en user id, navn behøver du sgu ikk, skriv din fav games ind, og lig timer ind som det var et fuldtidsjob </p>
+        </header>
+
+        <div class="user-section">
+            <div class="user-input">
+                <h2>Profil infooo hehe </h2>
+                <input type="text" id="userId" placeholder=" Din user ID" />
+                <input type="text" id="userName" placeholder="'alfrd', ej forsjov du vælger selv" />
+                <button onclick="createUser()">Log ind</button>
+            </div>
+
+            <div class="user-input">
+                <h2>Connect Google Calendar</h2>
+                <button onclick="connectGoogleCalendar()">Connect Calendar</button>
+                <button onclick="syncGoogleCalendar()">Sync Calendar</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="availability-section">
+                <h2>Marker LEDIGE timer, ind </h2>
+                <p>træk for at lave time blokke, eller klik for at lave slots</p>
+                
+                <div class="week-view" id="weekView">
+                    <div class="day-column" data-day="monday">
+                        <div class="day-header">Mandag</div>
+                        <div class="time-slots" id="monday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="tuesday">
+                        <div class="day-header">Tirsdag</div>
+                        <div class="time-slots" id="tuesday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="wednesday">
+                        <div class="day-header">Onsdag</div>
+                        <div class="time-slots" id="wednesday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="thursday">
+                        <div class="day-header">Torsdag</div>
+                        <div class="time-slots" id="thursday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="friday">
+                        <div class="day-header">Fredag</div>
+                        <div class="time-slots" id="friday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="saturday">
+                        <div class="day-header">Lørdag</div>
+                        <div class="time-slots" id="saturday-slots"></div>
+                    </div>
+                    <div class="day-column" data-day="sunday">
+                        <div class="day-header">SOFIA SUNDAY</div>
+                        <div class="time-slots" id="sunday-slots"></div>
+                    </div>
+                </div>
+
+                <button onclick="saveAvailability()" class="save-btn">Gem din tilgængelighed</button>
+            </div>
+
+            <div class="games-section">
+                <h2>Preferred Games</h2>
+                <div class="games-input">
+                    <input type="text" id="gameInput" placeholder="Add a game (e.g., Valorant, CS2, League)" />
+                    <button onclick="addGame()">Tilføj Game</button>
+                </div>
+                <div class="games-list" id="gamesList"></div>
+                <button onclick="saveGames()" class="save-btn">Gem Games</button>
+                
+                <div class="search-user-section" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #ddd;">
+                    <h3>Søg efter brugers Games</h3>
+                    <div class="games-input">
+                        <input type="text" id="searchUserId" placeholder="skriv brugers user ID" />
+                        <button onclick="searchUserGames()">Søg</button>
+                    </div>
+                    <div id="searchedUserGames" class="searched-games"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="find-section">
+            <h2>Find Gaming tid</h2>
+            <div class="friend-input">
+                <input type="text" id="friendId" placeholder="skriv din homies user ID" />
+                <button onclick="findSlots()">Find bedste tid</button>
+            </div>
+            <div id="results" class="results"></div>
+        </div>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html>
+

@@ -1,4 +1,22 @@
-const API_BASE = 'http://localhost:3006/api';
+// API Base URL - automatically detects environment
+// For GitHub Pages, set this to your deployed backend URL
+// You can also set it via window.API_BASE_URL before this script loads
+const API_BASE = (function() {
+    // Check if API_BASE_URL is set in window (can be set via script tag before this one)
+    if (window.API_BASE_URL) {
+        return window.API_BASE_URL;
+    }
+    
+    // Check if we're on GitHub Pages (github.io domain)
+    if (window.location.hostname.includes('github.io')) {
+        // Replace 'YOUR_USERNAME' and 'YOUR_REPO' with your actual GitHub username and repo name
+        // Or set this to your deployed backend URL (e.g., Render, Railway, Heroku)
+        return 'https://your-backend-url.herokuapp.com/api'; // TODO: Replace with your backend URL
+    }
+    
+    // Default to localhost for local development
+    return 'http://localhost:3006/api';
+})();
 
 let currentUserId = null;
 let currentGames = [];
