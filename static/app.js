@@ -7,14 +7,14 @@ const API_BASE = (function() {
         return window.API_BASE_URL;
     }
     
-    // Check if we're on GitHub Pages (github.io domain)
     if (window.location.hostname.includes('github.io')) {
-        // Replace 'YOUR_USERNAME' and 'YOUR_REPO' with your actual GitHub username and repo name
-        // Or set this to your deployed backend URL (e.g., Render, Railway, Heroku)
-        return 'https://your-backend-url.herokuapp.com/api'; // TODO: Replace with your backend URL
+        // When hosted on GitHub Pages, point to your deployed Flask backend
+        // GitHub Pages only serves static files, so your Flask app (app.py) must be deployed elsewhere
+        // Options: Render, Railway, Heroku, Fly.io, etc.
+        // Replace this with your actual backend deployment URL
+        return 'https://thephilipjuhl.github.io/api'; // TODO: Replace with your backend URL
     }
     
-    // Default to localhost for local development
     return 'http://localhost:3006/api';
 })();
 
@@ -22,7 +22,7 @@ let currentUserId = null;
 let currentGames = [];
 let isDragging = false;
 let isResizing = false;
-let resizeType = null; // 'top', 'bottom', or null
+let resizeType = null; 
 let dragStartY = 0;
 let currentBlock = null;
 let selectedDay = null;
@@ -34,7 +34,6 @@ function initializeTimeMarkers() {
         const container = document.getElementById(`${day}-slots`);
         container.innerHTML = '';
         
-        // Add time markers every 2 hours
         for (let hour = 0; hour < 24; hour += 2) {
             const marker = document.createElement('div');
             marker.className = 'time-marker';

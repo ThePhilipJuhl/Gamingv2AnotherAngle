@@ -21,9 +21,8 @@ except ImportError:
 load_dotenv()
 
 app = Flask(__name__, static_folder='static')
-CORS(app)
+CORS(app) 
 
-# Configuration
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '')
 GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET', '')
 GOOGLE_REDIRECT_URI = os.getenv('GOOGLE_REDIRECT_URI', 'http://localhost:3006/auth/callback')
@@ -31,7 +30,6 @@ DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL', '')
 SUPABASE_URL = os.getenv('SUPABASE_URL', '')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY', '')
 
-# Initialize Supabase (required)
 supabase_client = None
 if not SUPABASE_AVAILABLE:
     raise ImportError("Supabase package not installed. Install with: pip install supabase")
@@ -46,7 +44,6 @@ except Exception as e:
     raise ConnectionError(f"Failed to connect to Supabase: {e}")
 
 
-# Helper functions for Supabase operations
 def get_user_from_db(user_id):
     """Get user from Supabase"""
     try:
