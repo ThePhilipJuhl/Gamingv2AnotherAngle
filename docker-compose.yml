@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3006:3006"
+    env_file:
+      - .env
+    environment:
+      - FLASK_ENV=development
+      - PORT=3006
+    volumes:
+      - ./static:/app/static
+      - ./app.py:/app/app.py
+      - ./.env:/app/.env
+    restart: unless-stopped
+
